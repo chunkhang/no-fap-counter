@@ -14,7 +14,7 @@ This program has only been tested on Mac.
 ## Running It
 * You can run [noFapCounter.py](/src/noFapCounter.py) using Terminal: <br />
   ```
-  $ cd path/to/program
+  $ cd path/to/program <br />
   $ python3 noFapCounter.py
   ```
 * Alternatively, you can make it [executable](http://stackoverflow.com/questions/36564320/how-to-make-python-script-executable-on-osx): <br />
