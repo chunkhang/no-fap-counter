@@ -1,5 +1,6 @@
-import os, shelve, time, sys
+#!/usr/bin/env python3
 
+import os, shelve, time, sys
 
 def getCurrentTime():
 	''' Return current time '''

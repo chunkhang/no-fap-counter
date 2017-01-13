@@ -8,15 +8,24 @@ This program has only been tested on Mac.
 * Make sure you have [Python 3](http://docs.python-guide.org/en/latest/starting/install3/osx/) installed on Mac
 * If you already have Python 3, you should be able to launch the interpreter in Terminal: <br /> 
 ```
-python3
+$ python3
 ```
 
 ## Running It
-* Run src/noFapCounter.py using Terminal: <br />
+* You can run [noFapCounter.py](/src/noFapCounter.py) using Terminal: <br />
 ```
-python3 noFapCounter.py
+$ cd path/to/program
+$ python3 noFapCounter.py
 ```
-* Feel free to move the entire src folder and its contents anywhere you like
+* Alternatively, you can also make it [executable](http://stackoverflow.com/questions/36564320/how-to-make-python-script-executable-on-osx): <br />
+.bashrc <br />
+```
+1 export PATH=$PATH:/path/to/program/
+``` 
+Terminal <br />
+```
+$ noFapCounter.py
+```
 
 ## Screenshots
 ![Before Challenge](/img/before.png) <br />
