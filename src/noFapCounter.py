@@ -25,10 +25,20 @@ def resetCounter(s):
 	now = getCurrentTime()
 	s['epoch'] = now
 
+def printDivider():
+	print()
+	print(' ============================')
+	print()
+
 print()
 print(' ---------------------------- ')
 print('|  NO FAP CHALLENGE COUNTER  |')
 print(' ---------------------------- ')
+print()
+print(' Author: Marcus Mu')
+print(' Email: chunkhang@gmail.com')
+print(' Last Update: 16/01/17')
+printDivider()
 
 # Change working directory to script's location
 scriptPath = os.path.realpath(__file__)
@@ -48,7 +58,6 @@ while True:
 				epochExists = False
 			else:
 				epoch = shelf['epoch']
-		print()
 		print('EPOCH'.center(30))
 		print('-----'.center(30))
 		if epochExists:
@@ -75,7 +84,7 @@ while True:
 
 		reset = False
 		while True:
-			print()
+			printDivider()
 			print(' (1) RESET')
 			print(' (2) NOTE')
 			print(' (3) EXIT')
@@ -98,12 +107,15 @@ while True:
 				reset = True
 			elif response == '2':
 				# Display note
-				print()
+				printDivider()
 				print(' Note:')
-				print(' This program stores data in a')
-				print(' hidden file, .counter_data,  ')
-				print(' located in the same path as  ')
-				print(' the program.')
+				print()
+				print(' EPOCH  Date and time of last')
+				print('        reset                ')
+				print(' TODAY  Current date and time')
+				print(' DAY    Number of days since ')
+				print('        epoch                ')
+				print('        (1 day = 24 hours)   ')
 			else:
 				# Exit program
 				print()
