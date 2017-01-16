@@ -1,5 +1,5 @@
 # No Fap Challenge Counter
-A console-based day counter for the No Fap Challenge.
+I am an advocate of the [No Fap Challenge](https://www.nofap.com). As such, I saw the need for a day counter that is easy to access and use on the computer. To learn more about the challenge, I recommend the dedicated [NoFap subreddit](https://www.reddit.com/r/NoFap/).
 
 ## Note
 This program has only been tested on Mac.
