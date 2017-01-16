@@ -118,7 +118,7 @@ while True:
 				print('        (1 day = 24 hours)   ')
 			else:
 				# Exit program
-				print()
+				printDivider()
 				print(' Have a nice day!')
 				sys.exit()
 
