@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 
-import os, shelve, time, sys
+import os
+import sys
+import time
+import shelve
+import termios
 
 def getCurrentTime():
 	''' Return current time '''
@@ -73,7 +77,7 @@ while True:
 		print(getTimeString(getCurrentTime())[0].center(30))
 		print(getTimeString(getCurrentTime())[1].center(30))
 
-		# Display days
+		# Display day
 		print()
 		print('DAY'.center(30))
 		print('---'.center(30))
@@ -101,8 +105,17 @@ while True:
 
 			if response == '1':
 				# Reset epoch
+				printDivider()
+				print('Resetting counter...'.center(30)) 
 				print()
-				print(' Counter reset...')
+				print('     ', end='')
+				for i in range(20): 
+					time.sleep(0.5)
+					# sys.stdout.write('|')
+					# sys.stdout.flush()
+					print('|', end='', flush=True)
+				print()
+				printDivider()
 				resetCounter(shelf)
 				reset = True
 			elif response == '2':
@@ -119,7 +132,7 @@ while True:
 			else:
 				# Exit program
 				printDivider()
-				print(' Have a nice day!')
+				print('Have a nice day!'.center(30))
 				sys.exit()
 
 			if reset:
