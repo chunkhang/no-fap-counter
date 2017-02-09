@@ -2,7 +2,7 @@
 I am an advocate of the [No Fap Challenge](https://www.nofap.com). As such, I saw the need for a day counter that is easy to access and use on the computer. To learn more about the challenge, I recommend the dedicated [NoFap subreddit](https://www.reddit.com/r/NoFap/).
 
 ## Screenshot
-![Counter](/img/counter_new.jpg)
+![Counter](/img/counter.jpg)
 
 ## Requirements
 ### Git
@@ -14,7 +14,7 @@ Python 3 is required to run the program. Python 2 does not work. Click [here](ht
 Type this into the console or terminal:
 ```sh
 $ cd Desktop
-$ git clone git@github.com:chunkhang/no-fap-counter.git
+$ git clone https://github.com/chunkhang/no-fap-counter
 ```
 
 ## Usage
@@ -28,7 +28,7 @@ $ python src/noFapCounter.py
 To ensure that you are using the latest version, check the changelog to see whether the date matches your program's last-updated date. To update your program, fetch the changes from GitHub:
 ```sh
 $ cd path/to/folder
-$ git pull git@github.com:chunkhang/no-fap-counter.git
+$ git pull https://github.com/chunkhang/no-fap-counter
 ```
 
 ## Changelog
