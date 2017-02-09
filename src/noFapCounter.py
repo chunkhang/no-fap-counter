@@ -42,7 +42,7 @@ print(' ---------------------------- ')
 print()
 print(' Author: Marcus Mu')
 print(' Email: chunkhang@gmail.com')
-print(' Last Updated: 09/02/17')
+print(' Last Updated: 2017-02-09')
 printDivider()
 
 # Change working directory to script's location
@@ -90,8 +90,8 @@ while True:
 		reset = False
 		while True:
 			printDivider()
-			print(' (0) PANIC')
-			print(' (1) RESET')
+			print(' (0) RESET')
+			print(' (1) PANIC')
 			print(' (2) NOTE')
 			print(' (3) EXIT')
 			print()
@@ -106,11 +106,6 @@ while True:
 					print(' Invalid response.\n')
 
 			if response == '0':
-				# Panic button
-				printDivider()
-				print(' Panic button initiated...')
-				webbrowser.open('https://emergency.nofap.com')
-			elif response == '1':
 				# Confirm reset
 				printDivider()
 				confirm = ''
@@ -135,6 +130,11 @@ while True:
 					printDivider()
 					resetCounter(shelf)
 					reset = True
+			elif response == '1':
+				# Panic button
+				printDivider()
+				print(' Panic button initiated...')
+				webbrowser.open('https://emergency.nofap.com')
 			elif response == '2':
 				# Display note
 				printDivider()
