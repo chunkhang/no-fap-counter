@@ -8,7 +8,7 @@ I am an advocate of the [No Fap Challenge](https://www.nofap.com). As such, I sa
 ### Git
 Git is required to download the program and fetch future updates. Click [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to learn how to install Git.
 ### Python 3
-Python 3 is required to run the program. Python 2 does not work. Click [here](http://www.diveintopython3.net/installing-python.html) to learn how to install Python 3.
+Python 3 is required to run the program. Click [here](http://www.diveintopython3.net/installing-python.html) to learn how to install Python 3.
 
 ## Installation
 Type this into the console or terminal:
@@ -18,10 +18,16 @@ $ git clone https://github.com/chunkhang/no-fap-counter
 ```
 
 ## Usage
-Feel free to move the **no-fap-counter** folder anywhere, but do leave the contents intact. Windows users can create a [batch file](http://www.makeuseof.com/tag/write-simple-batch-bat-file/) to make the process easier. Mac and other Unix users can create an [alias](http://www.hostingadvice.com/how-to/set-command-aliases-linuxubuntudebian/).
+Feel free to move the **no-fap-counter** folder anywhere, but do leave the contents intact. 
+### Windows
+Windows users can either use the console to run the program, or simply double-click the **noFapCounter.py** file. Create a shortcut to make the process easier. 
 ```sh
-$ cd no-fap-counter
-$ python src/noFapCounter.py
+$ no-fap-counter\src\noFapCounter.py
+```
+### Mac
+Mac users need to employ the terminal to run the program. Create an [alias](http://www.hostingadvice.com/how-to/set-command-aliases-linuxubuntudebian/) to make life simpler.
+```sh
+$ python3 no-fap-counter/src/noFapCounter.py
 ```
 
 ## Updates
