@@ -25,7 +25,7 @@ $ python3 noFapCounter.py
     ```
 
 ## Screenshot
-![Counter](/img/counter.png) <br />
+![Counter](/img/counter.jpg) <br />
 
 ## Contact
 Marcus Mu <br />
