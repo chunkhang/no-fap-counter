@@ -11,6 +11,7 @@ Git is required to download the program and fetch future updates. Click [here](h
 Python 3 is required to run the program. Python 2 does not work. Click [here](http://www.diveintopython3.net/installing-python.html) to learn how to install Python 3.
 
 ## Installation
+Type this into the console or terminal:
 ```sh
 $ cd Desktop
 $ git clone git@github.com:chunkhang/no-fap-counter.git
@@ -26,8 +27,8 @@ $ python src/noFapCounter.py
 ## Updates
 To ensure that you are using the latest version, check the changelog to see whether the date matches your program's last-updated date. To update your program, fetch the changes from GitHub:
 ```sh
-cd path/to/folder
-git pull git@github.com:chunkhang/no-fap-counter.git
+$ cd path/to/folder
+$ git pull git@github.com:chunkhang/no-fap-counter.git
 ```
 
 ## Changelog
