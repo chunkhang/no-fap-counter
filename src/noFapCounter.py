@@ -41,7 +41,7 @@ print(' ---------------------------- ')
 print()
 print(' Author: Marcus Mu')
 print(' Email: chunkhang@gmail.com')
-print(' Last Update: 16/01/17')
+print(' Last Updated: 09/02/17')
 printDivider()
 
 # Change working directory to script's location
@@ -98,26 +98,37 @@ while True:
 			response = ''
 			while True:
 				response = input(' Enter a number: ')
-				if response in '1 2 3':
+				if response in '1 2 3'.split(' '):
 					break
 				else:
 					print(' Invalid response.\n')
 
 			if response == '1':
+				# Confirm reset
+				printDivider()
+				confirm = ''
+				while True:
+					confirm = input(' Are you sure? (Y/N) ')
+					if confirm in 'Y y N n'.split(' '):
+						break
+					else:
+						print(' Invalid response.\n')
+
 				# Reset epoch
-				printDivider()
-				print('Resetting counter...'.center(30)) 
-				print()
-				print('     ', end='')
-				for i in range(20): 
-					time.sleep(0.5)
-					# sys.stdout.write('|')
-					# sys.stdout.flush()
-					print('|', end='', flush=True)
-				print()
-				printDivider()
-				resetCounter(shelf)
-				reset = True
+				if confirm.upper() == 'Y':
+					printDivider()
+					print('Resetting counter...'.center(30)) 
+					print()
+					print('     ', end='')
+					for i in range(20): 
+						time.sleep(0.5)
+						# sys.stdout.write('|')
+						# sys.stdout.flush()
+						print('|', end='', flush=True)
+					print()
+					printDivider()
+					resetCounter(shelf)
+					reset = True
 			elif response == '2':
 				# Display note
 				printDivider()
