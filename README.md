@@ -2,7 +2,7 @@
 I am an advocate of the [No Fap Challenge](https://www.nofap.com). As such, I saw the need for a day counter that is easy to access and use on the computer. To learn more about the challenge, I recommend the dedicated [NoFap subreddit](https://www.reddit.com/r/NoFap/).
 
 ## Screenshot
-![Counter](/img/counter.jpg)
+![Counter](/img/counter_new.jpg)
 
 ## Requirements
 ### Git
