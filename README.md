@@ -1,9 +1,6 @@
 # No Fap Challenge Counter
 I am an advocate of the [No Fap Challenge](https://www.nofap.com). As such, I saw the need for a day counter that is easy to access and use on the computer. To learn more about the challenge, I recommend the dedicated [NoFap subreddit](https://www.reddit.com/r/NoFap/).
 
-## Note
-This program has only been tested on Mac.
-
 ## Before Starting
 * Make sure you have [Python 3](http://docs.python-guide.org/en/latest/starting/install3/osx/) installed on Mac
 * If you already have Python 3, you should be able to launch the interpreter in Terminal: <br /> 
@@ -27,9 +24,8 @@ $ python3 noFapCounter.py
     $ noFapCounter.py
     ```
 
-## Screenshots
-![Before Challenge](/img/before.png) <br />
-![Challenge in Progress](/img/progress.png)
+## Screenshot
+![Counter](/img/counter.png) <br />
 
 ## Contact
 Marcus Mu <br />
