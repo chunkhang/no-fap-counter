@@ -5,6 +5,7 @@ import sys
 import time
 import shelve
 import termios
+import webbrowser
 
 def getCurrentTime():
 	''' Return current time '''
@@ -89,6 +90,7 @@ while True:
 		reset = False
 		while True:
 			printDivider()
+			print(' (0) PANIC')
 			print(' (1) RESET')
 			print(' (2) NOTE')
 			print(' (3) EXIT')
@@ -98,12 +100,17 @@ while True:
 			response = ''
 			while True:
 				response = input(' Enter a number: ')
-				if response in '1 2 3'.split(' '):
+				if response in '0 1 2 3'.split(' '):
 					break
 				else:
 					print(' Invalid response.\n')
 
-			if response == '1':
+			if response == '0':
+				# Panic button
+				printDivider()
+				print(' Panic button initiated...')
+				webbrowser.open('https://emergency.nofap.com')
+			elif response == '1':
 				# Confirm reset
 				printDivider()
 				confirm = ''
@@ -113,7 +120,6 @@ while True:
 						break
 					else:
 						print(' Invalid response.\n')
-
 				# Reset epoch
 				if confirm.upper() == 'Y':
 					printDivider()
@@ -132,18 +138,20 @@ while True:
 			elif response == '2':
 				# Display note
 				printDivider()
-				print(' Note:')
-				print()
 				print(' EPOCH  Date and time of last')
 				print('        reset                ')
 				print(' TODAY  Current date and time')
 				print(' DAY    Number of days since ')
 				print('        epoch                ')
 				print('        (1 day = 24 hours)   ')
+				print(' PANIC  Opens the panic link ')
+				print('        (emergency.nofap.com)')
+				print(' RESET  Reset the counter    ')
+				print(' EXIT   Exit the program     ')
 			else:
 				# Exit program
 				printDivider()
-				print('Have a nice day!'.center(30))
+				print('Carpe diem!'.center(30))
 				sys.exit()
 
 			if reset:
