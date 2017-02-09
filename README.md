@@ -20,15 +20,15 @@ $ git clone https://github.com/chunkhang/no-fap-counter
 ## Usage
 Feel free to move the **no-fap-counter** folder anywhere, but do leave the contents intact. Windows users can create a [batch file](http://www.makeuseof.com/tag/write-simple-batch-bat-file/) to make the process easier. Mac and other Unix users can create an [alias](http://www.hostingadvice.com/how-to/set-command-aliases-linuxubuntudebian/).
 ```sh
-$ cd path/to/folder
+$ cd no-fap-counter
 $ python src/noFapCounter.py
 ```
 
 ## Updates
 To ensure that you are using the latest version, check the changelog to see whether the date matches your program's last-updated date. To update your program, fetch the changes from GitHub:
 ```sh
-$ cd path/to/folder
-$ git pull https://github.com/chunkhang/no-fap-counter
+$ cd no-fap-counter
+$ git pull
 ```
 
 ## Changelog
@@ -37,5 +37,4 @@ $ git pull https://github.com/chunkhang/no-fap-counter
 
 ## Contact
 Contact me to report bugs or suggest features: <br />
-**Marcus Mu** <br />
-chunkhang@gmail.com
+**Marcus Mu** chunkhang@gmail.com
