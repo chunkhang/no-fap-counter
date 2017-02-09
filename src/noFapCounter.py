@@ -4,7 +4,6 @@ import os
 import sys
 import time
 import shelve
-import termios
 import webbrowser
 
 def getCurrentTime():
@@ -123,8 +122,6 @@ while True:
 					print('     ', end='')
 					for i in range(20): 
 						time.sleep(0.5)
-						# sys.stdout.write('|')
-						# sys.stdout.flush()
 						print('|', end='', flush=True)
 					print()
 					printDivider()
