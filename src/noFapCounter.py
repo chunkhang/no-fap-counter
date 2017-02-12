@@ -198,7 +198,7 @@ while True:
 				# Display about
 				print(leftPadString('Author: Marcus Mu', LEFT_PADDING))
 				print(leftPadString('Email: chunkhang@gmail.com', LEFT_PADDING))
-				print(leftPadString('Last Updated: 2017-02-09', LEFT_PADDING))
+				print(leftPadString('Last Updated: 2017-02-12', LEFT_PADDING))
 			else:
 				# Exit program
 				sys.exit()

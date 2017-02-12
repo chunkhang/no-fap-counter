@@ -38,6 +38,11 @@ $ git pull
 ```
 
 ## Changelog
+
+### 2017-02-12
+* Added quotes (You can now add your own quotes in src/quotes.txt)
+* Replaced note with about
+
 ### 2017-02-09
 * Started changelog 
 
