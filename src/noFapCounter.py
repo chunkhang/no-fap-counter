@@ -3,8 +3,13 @@
 import os
 import sys
 import time
+import random
 import shelve
 import webbrowser
+
+
+QUOTES_FILE = 'quotes.txt'
+
 
 def getCurrentTime():
 	''' Return current time '''
@@ -18,7 +23,7 @@ def getTimeString(t):
 	return (date, _time)
 
 def getDays(t):
-	''' Return an integer of days elapsed since t'''
+	''' Return an integer of days elapsed since t '''
 	now = getCurrentTime()
 	seconds = now - t
 	days = int(seconds // 60 // 60 // 24)
@@ -34,20 +39,75 @@ def printDivider():
 	print(' ============================')
 	print()
 
+def leftAlignString(text, width):
+	''' Return a string left-aligned within the given width '''
+	words = text.split()
+	# Check longest word against width
+	longestWord = ''
+	for word in words:
+		if len(word) > len(longestWord):
+			longestWord = word
+	assert len(longestWord) <= width, 'Longest word cannot exceed width'
+	# Left-align text
+	string = ''
+	line = ''
+	firstWord = True
+	for word in words:
+		lineLength = len(line)
+		wordLength = len(word) + 1
+		if firstWord:
+			line += word
+			firstWord = False
+			continue
+		if lineLength + wordLength > width:
+			line += ('\n')
+			string += line
+			line = word
+		else:
+			line += (' ' + word)
+	string += line
+	return string
+
+def centerAlignString(text, width):
+	''' Return a string centered-aligned within the given width '''
+	leftAlignedText = leftAlignString(text, width)
+	lines = leftAlignedText.split('\n')
+	centeredLines = list(map(lambda line: line.center(width), lines))
+	return '\n'.join(centeredLines)
+
+def leftPadString(text, padding):
+	''' Return a string left-padded with the given padding '''
+	lines = text.split('\n')
+	paddedLines = (map(lambda line: ' '*padding + line, lines))
+	return '\n'.join(paddedLines)
+
 print()
 print(' ---------------------------- ')
 print('|  NO FAP CHALLENGE COUNTER  |')
 print(' ---------------------------- ')
 print()
-print(' Author: Marcus Mu')
-print(' Email: chunkhang@gmail.com')
-print(' Last Updated: 2017-02-09')
-printDivider()
+# print(' Author: Marcus Mu')
+# print(' Email: chunkhang@gmail.com')
+# print(' Last Updated: 2017-02-09')
 
 # Change working directory to script's location
 scriptPath = os.path.realpath(__file__)
 scriptDirectory = os.path.dirname(scriptPath)
 os.chdir(scriptDirectory)
+
+# Display random quote
+with open(QUOTES_FILE, 'r') as file:
+	lines = file.read().split('\n')
+	quotes = []
+	for line in lines[1:]:
+		quotes.append(line)
+	quote = random.choice(quotes)
+	author, saying = quote.split('-')
+	centeredSaying = centerAlignString(saying.strip(), 28)
+	print(leftPadString(centeredSaying, 1))
+	print(('(%s)' % author.strip()).center(30))
+
+printDivider()
 
 while True:
 	with shelve.open('.counter_data') as shelf:
@@ -99,7 +159,7 @@ while True:
 			response = ''
 			while True:
 				response = input(' Enter a number: ')
-				if response in '0 1 2 3'.split(' '):
+				if response in '0 1 2 3'.split():
 					break
 				else:
 					print(' Invalid response.\n')
@@ -110,7 +170,7 @@ while True:
 				confirm = ''
 				while True:
 					confirm = input(' Are you sure? (Y/N) ')
-					if confirm in 'Y y N n'.split(' '):
+					if confirm in 'Y y N n'.split():
 						break
 					else:
 						print(' Invalid response.\n')
@@ -148,7 +208,6 @@ while True:
 			else:
 				# Exit program
 				printDivider()
-				print('Carpe diem!'.center(30))
 				sys.exit()
 
 			if reset:
