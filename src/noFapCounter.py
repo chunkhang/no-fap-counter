@@ -86,9 +86,6 @@ print(' ---------------------------- ')
 print('|  NO FAP CHALLENGE COUNTER  |')
 print(' ---------------------------- ')
 print()
-# print(' Author: Marcus Mu')
-# print(' Email: chunkhang@gmail.com')
-# print(' Last Updated: 2017-02-09')
 
 # Change working directory to script's location
 scriptPath = os.path.realpath(__file__)
@@ -151,7 +148,7 @@ while True:
 			printDivider()
 			print(' (0) RESET')
 			print(' (1) PANIC')
-			print(' (2) NOTE')
+			print(' (2) ABOUT')
 			print(' (3) EXIT')
 			print()
 
@@ -164,9 +161,10 @@ while True:
 				else:
 					print(' Invalid response.\n')
 
+			printDivider()
+
 			if response == '0':
 				# Confirm reset
-				printDivider()
 				confirm = ''
 				while True:
 					confirm = input(' Are you sure? (Y/N) ')
@@ -189,25 +187,15 @@ while True:
 					reset = True
 			elif response == '1':
 				# Panic button
-				printDivider()
 				print(' Panic button initiated...')
 				webbrowser.open('https://emergency.nofap.com')
 			elif response == '2':
-				# Display note
-				printDivider()
-				print(' EPOCH  Date and time of last')
-				print('        reset                ')
-				print(' TODAY  Current date and time')
-				print(' DAY    Number of days since ')
-				print('        epoch                ')
-				print('        (1 day = 24 hours)   ')
-				print(' PANIC  Opens the panic link ')
-				print('        (emergency.nofap.com)')
-				print(' RESET  Reset the counter    ')
-				print(' EXIT   Exit the program     ')
+				# Display about
+				print(' Author: Marcus Mu')
+				print(' Email: chunkhang@gmail.com')
+				print(' Last Updated: 2017-02-09')
 			else:
 				# Exit program
-				printDivider()
 				sys.exit()
 
 			if reset:
