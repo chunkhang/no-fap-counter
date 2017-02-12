@@ -8,8 +8,12 @@ import shelve
 import webbrowser
 
 
-QUOTES_FILE = 'quotes.txt'
-
+COUNTER_DATA = '.counter_data' # Path for counter data file
+QUOTES_FILE = 'quotes.txt' # Path for quotes file
+WIDTH = 30 # Width of the entire program
+LEFT_PADDING = 2 # Left padding for the entire program
+RESET_BAR = 20 # Length of reset bar
+RESET_SPEED = 0.5 # Larger value means slower reset
 
 def getCurrentTime():
 	''' Return current time '''
@@ -35,9 +39,8 @@ def resetCounter(s):
 	s['epoch'] = now
 
 def printDivider():
-	print()
-	print(' ============================')
-	print()
+	''' Print a horizontal divider '''
+	print(leftPadString('\n%s\n' % ('='*(WIDTH-2)), LEFT_PADDING))
 
 def leftAlignString(text, width):
 	''' Return a string left-aligned within the given width '''
@@ -81,33 +84,36 @@ def leftPadString(text, padding):
 	paddedLines = (map(lambda line: ' '*padding + line, lines))
 	return '\n'.join(paddedLines)
 
-print()
-print(' ---------------------------- ')
-print('|  NO FAP CHALLENGE COUNTER  |')
-print(' ---------------------------- ')
-print()
+def printQuote():
+	''' Print a random quote '''
+	with open(QUOTES_FILE, 'r') as file:
+		lines = file.read().split('\n')
+		quotes = []
+		for line in lines[1:]:
+			quotes.append(line)
+		quote = random.choice(quotes)
+		author, saying = quote.split('-')
+		centeredSaying = centerAlignString(saying.strip(), WIDTH-2)
+		print(leftPadString(centeredSaying, LEFT_PADDING))
+		print(('(%s)' % author.strip()).center(WIDTH-2+(LEFT_PADDING*2)))
+
+
+# Print program title
+print(leftPadString('\n%s' % ('-'*(WIDTH-2)), LEFT_PADDING))
+print(leftPadString('|%s|' % 'NO FAP CHALLENGE COUNTER'.center(WIDTH-2), LEFT_PADDING-1))
+print(leftPadString('%s\n' % ('-'*(WIDTH-2)), LEFT_PADDING))
 
 # Change working directory to script's location
 scriptPath = os.path.realpath(__file__)
 scriptDirectory = os.path.dirname(scriptPath)
 os.chdir(scriptDirectory)
 
-# Display random quote
-with open(QUOTES_FILE, 'r') as file:
-	lines = file.read().split('\n')
-	quotes = []
-	for line in lines[1:]:
-		quotes.append(line)
-	quote = random.choice(quotes)
-	author, saying = quote.split('-')
-	centeredSaying = centerAlignString(saying.strip(), 28)
-	print(leftPadString(centeredSaying, 1))
-	print(('(%s)' % author.strip()).center(30))
-
+# Print random quote
+printQuote()
 printDivider()
 
 while True:
-	with shelve.open('.counter_data') as shelf:
+	with shelve.open(COUNTER_DATA) as shelf:
 		# Display epoch
 		epochExists = True
 		if 'epoch' not in shelf:
@@ -119,67 +125,66 @@ while True:
 				epochExists = False
 			else:
 				epoch = shelf['epoch']
-		print('EPOCH'.center(30))
-		print('-----'.center(30))
+		print('EPOCH'.center(WIDTH-2+(LEFT_PADDING*2)))
+		print('-----'.center(WIDTH-2+(LEFT_PADDING*2)))
 		if epochExists:
-			print(getTimeString(epoch)[0].center(30))
-			print(getTimeString(epoch)[1].center(30))
+			print(getTimeString(epoch)[0].center(WIDTH-2+(LEFT_PADDING*2)))
+			print(getTimeString(epoch)[1].center(WIDTH-2+(LEFT_PADDING*2)))
 		else:
-			print('-'.center(30))
+			print('-'.center(WIDTH-2+(LEFT_PADDING*2)))
 
 		# Display today
 		print()
-		print('TODAY'.center(30))
-		print('-----'.center(30))
-		print(getTimeString(getCurrentTime())[0].center(30))
-		print(getTimeString(getCurrentTime())[1].center(30))
+		print('TODAY'.center(WIDTH-2+(LEFT_PADDING*2)))
+		print('-----'.center(WIDTH-2+(LEFT_PADDING*2)))
+		print(getTimeString(getCurrentTime())[0].center(WIDTH-2+(LEFT_PADDING*2)))
+		print(getTimeString(getCurrentTime())[1].center(WIDTH-2+(LEFT_PADDING*2)))
 
 		# Display day
 		print()
-		print('DAY'.center(30))
-		print('---'.center(30))
+		print('DAY'.center(WIDTH-2+(LEFT_PADDING*2)))
+		print('---'.center(WIDTH-2+(LEFT_PADDING*2)))
 		if epochExists:
-			print(str(getDays(epoch)).center(30))
+			print(str(getDays(epoch)).center(WIDTH-2+(LEFT_PADDING*2)))
 		else:
-			print('-'.center(30))
+			print('-'.center(WIDTH-2+(LEFT_PADDING*2)))
 
 		reset = False
 		while True:
 			printDivider()
-			print(' (0) RESET')
-			print(' (1) PANIC')
-			print(' (2) ABOUT')
-			print(' (3) EXIT')
-			print()
+			print(leftPadString('(0) RESET', LEFT_PADDING))
+			print(leftPadString('(1) PANIC', LEFT_PADDING))
+			print(leftPadString('(2) ABOUT', LEFT_PADDING))
+			print(leftPadString('(3) EXIT\n', LEFT_PADDING))
 
 			# Prompt response
 			response = ''
 			while True:
-				response = input(' Enter a number: ')
+				response = input(leftPadString('Enter a number: ', LEFT_PADDING))
 				if response in '0 1 2 3'.split():
 					break
 				else:
-					print(' Invalid response.\n')
-
+					print(leftPadString('Invalid response.\n', LEFT_PADDING))
 			printDivider()
 
+			# Evaluate response
 			if response == '0':
 				# Confirm reset
 				confirm = ''
 				while True:
-					confirm = input(' Are you sure? (Y/N) ')
+					confirm = input(leftPadString('Are you sure? (Y/N) ', LEFT_PADDING))
 					if confirm in 'Y y N n'.split():
 						break
 					else:
-						print(' Invalid response.\n')
+						print(leftPadString('Invalid response.\n', LEFT_PADDING))
 				# Reset epoch
 				if confirm.upper() == 'Y':
 					printDivider()
-					print('Resetting counter...'.center(30)) 
+					print('Resetting counter...'.center(WIDTH-2+(LEFT_PADDING*2))) 
 					print()
-					print('     ', end='')
-					for i in range(20): 
-						time.sleep(0.5)
+					print(' '*(int((WIDTH-2-RESET_BAR)/2)+LEFT_PADDING), end='')
+					for i in range(RESET_BAR): 
+						time.sleep(RESET_SPEED)
 						print('|', end='', flush=True)
 					print()
 					printDivider()
@@ -187,13 +192,13 @@ while True:
 					reset = True
 			elif response == '1':
 				# Panic button
-				print(' Panic button initiated...')
+				print(leftPadString('Panic button initiated...', LEFT_PADDING))
 				webbrowser.open('https://emergency.nofap.com')
 			elif response == '2':
 				# Display about
-				print(' Author: Marcus Mu')
-				print(' Email: chunkhang@gmail.com')
-				print(' Last Updated: 2017-02-09')
+				print(leftPadString('Author: Marcus Mu', LEFT_PADDING))
+				print(leftPadString('Email: chunkhang@gmail.com', LEFT_PADDING))
+				print(leftPadString('Last Updated: 2017-02-09', LEFT_PADDING))
 			else:
 				# Exit program
 				sys.exit()
